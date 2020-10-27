@@ -3,29 +3,24 @@ const ulElement = document.querySelector('ul');
 let size = 10
 
 const button = document.querySelector('button')
-let tablica = []
-const fun = ()=> {
-    for (let i =0 ; i < tablica.length; i++){
-        tablica[i].style.fontSize = size + 'px'
-    }
-}
+let liElements = []
+let flag = true
 const createLiElement = ()=> {
-    const allUl = document.querySelectorAll('li');
-    const allUl1 = [...allUl]
-    
-    if (allUl1.length < 10) {
-        for ( let i =0; i<= 10; i++) {
-        const liElements = document.createElement('li');
-        liElements.style.display = 'block'
-        liElements.style.fontSize = `${size}px`
-        liElements.textContent = i
-        ulElement.appendChild(liElements);
-        tablica.push(liElements)
+        if (flag){
+            for ( let i =0; i<= 10; i++) {
+            const liElement = document.createElement('li');
+            liElement.style.display = 'block'
+            liElement.style.fontSize = `${size}px`
+            liElement.textContent = i
+            ulElement.appendChild(liElement);
+            liElements.push(liElement)
+            flag = !flag;  
+            }    
+        }
+    for (let i = 0; i < liElements.length; i++) {
+        liElements[i].style.fontSize = size + 'px'
     }
-    }
-    
     size+=1;
-    fun()
     }
     
 
