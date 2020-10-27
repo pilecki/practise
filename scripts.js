@@ -1,31 +1,41 @@
-const ulElement = document.querySelector('ul');
+let size = 10;
+let orderElement = 1;
+const init = () => {
+const btn = document.createElement('button');
+btn.textContent = 'Make list'
+const secondBtn = document.createElement('button');
+secondBtn.textContent = 'Reset'
+const ulElement = document.createElement('ul')
+document.body.appendChild(btn);
+document.body.appendChild(ulElement);
+document.body.appendChild(secondBtn);
+btn.addEventListener('click', createLiElements)
+secondBtn.addEventListener('click', function(){
+    let liElements = document.querySelectorAll('li')
+    console.log(liElements)
+    liElements.forEach( element => {
+        element.remove()
+        size = 10
+        orderElement = 1
+    })
 
-let size = 10
 
-const button = document.querySelector('button')
-let liElements = []
-let flag = true
-const createLiElement = ()=> {
-        if (flag){
-            for ( let i =0; i<= 10; i++) {
-            const liElement = document.createElement('li');
-            liElement.style.display = 'block'
-            liElement.style.fontSize = `${size}px`
-            liElement.textContent = i
-            ulElement.appendChild(liElement);
-            liElements.push(liElement)
-            flag = !flag;  
-            }    
-        }
-    // for (let i = 0; i < liElements.length; i++) {
-    //     liElements[i].style.fontSize = size + 'px'
-    // }
-        liElements.forEach(element => {
-        element.style.fontSize = `${size}px`
-    });
-    size+=1;
+})
+
+}
+
+const createLiElements = () => {
+    for (let i = 0; i <= 10; i++ ){
+        const ulElement = document.querySelector('ul')
+        const liElement = document.createElement('li')
+        liElement.textContent = orderElement
+        liElement.style.display = 'block'
+        liElement.style.fontSize = `${size}px`
+        ulElement.appendChild(liElement)
+        orderElement++
+        size++
     }
-    
+}
 
-button.addEventListener('click', createLiElement);
+init()
 
