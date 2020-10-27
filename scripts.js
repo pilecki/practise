@@ -17,11 +17,15 @@ const createLiElement = ()=> {
             flag = !flag;  
             }    
         }
-    for (let i = 0; i < liElements.length; i++) {
-        liElements[i].style.fontSize = size + 'px'
-    }
+    // for (let i = 0; i < liElements.length; i++) {
+    //     liElements[i].style.fontSize = size + 'px'
+    // }
+        liElements.forEach(element => {
+        element.style.fontSize = `${size}px`
+    });
     size+=1;
     }
     
 
 button.addEventListener('click', createLiElement);
+
